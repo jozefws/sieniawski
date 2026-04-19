@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(const SieniawskiApp());
@@ -301,15 +302,6 @@ class _HeroSection extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  const Text(
-                    'A FAMILY NAME',
-                    style: TextStyle(
-                      color: Color(0xFFD4AF37),
-                      fontSize: 13,
-                      letterSpacing: 6,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
                   const SizedBox(height: 48),
                   ExcludeSemantics(
                     child: Container(width: 1, height: 48, color: const Color(0xFFD4AF37)),
@@ -402,7 +394,7 @@ class _AboutSection extends StatelessWidget {
             ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 720),
               child: const Text(
-                'The Sieniawski name carries centuries of heritage. This site celebrates the family, its roots, and the connections that bind generations together.',
+                'The Sieniawski name carries centuries of heritage. Originating in Poland, the family has been associated with nobility, military service, and cultural contributions throughout history.',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white70,
@@ -638,115 +630,17 @@ class _ContactSection extends StatelessWidget {
         child: Column(
           children: [
             const _SectionLabel('CONTACT'),
-            const SizedBox(height: 16),
+            const SizedBox(height: 24),
             const Text(
               'Get in touch with the family',
               style: TextStyle(color: Colors.white38, fontSize: 14, letterSpacing: 1),
             ),
-            const SizedBox(height: 56),
-            ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 480),
-              child: const _ContactForm(),
+            const SizedBox(height: 48),
+            _GoldButton(
+              label: 'EMAIL US',
+              onTap: () => launchUrl(Uri.parse('mailto:contact@sieniawski.co.uk')),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class _ContactForm extends StatefulWidget {
-  const _ContactForm();
-
-  @override
-  State<_ContactForm> createState() => _ContactFormState();
-}
-
-class _ContactFormState extends State<_ContactForm> {
-  final _nameController = TextEditingController();
-  final _emailController = TextEditingController();
-  final _messageController = TextEditingController();
-  bool _submitted = false;
-
-  @override
-  void dispose() {
-    _nameController.dispose();
-    _emailController.dispose();
-    _messageController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    if (_submitted) {
-      return Semantics(
-        liveRegion: true,
-        label: 'Message sent successfully',
-        child: const Column(
-          children: [
-            Icon(Icons.check_circle_outline, color: Color(0xFFD4AF37), size: 48),
-            SizedBox(height: 16),
-            Text(
-              'Thank you for your message.',
-              style: TextStyle(color: Colors.white70, fontSize: 16, letterSpacing: 1),
-            ),
-          ],
-        ),
-      );
-    }
-
-    return Column(
-      children: [
-        _FormField(controller: _nameController, label: 'Name', inputType: TextInputType.name),
-        const SizedBox(height: 20),
-        _FormField(controller: _emailController, label: 'Email', inputType: TextInputType.emailAddress),
-        const SizedBox(height: 20),
-        _FormField(controller: _messageController, label: 'Message', maxLines: 4),
-        const SizedBox(height: 32),
-        SizedBox(
-          width: double.infinity,
-          child: _GoldButton(
-            label: 'SEND MESSAGE',
-            onTap: () => setState(() => _submitted = true),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class _FormField extends StatelessWidget {
-  final TextEditingController controller;
-  final String label;
-  final int maxLines;
-  final TextInputType inputType;
-
-  const _FormField({
-    required this.controller,
-    required this.label,
-    this.maxLines = 1,
-    this.inputType = TextInputType.text,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Semantics(
-      label: label,
-      textField: true,
-      child: TextField(
-        controller: controller,
-        maxLines: maxLines,
-        keyboardType: inputType,
-        style: const TextStyle(color: Colors.white, fontSize: 14),
-        decoration: InputDecoration(
-          labelText: label,
-          labelStyle: const TextStyle(color: Colors.white38, letterSpacing: 1, fontSize: 13),
-          enabledBorder: const UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.white24),
-          ),
-          focusedBorder: const UnderlineInputBorder(
-            borderSide: BorderSide(color: Color(0xFFD4AF37)),
-          ),
         ),
       ),
     );
