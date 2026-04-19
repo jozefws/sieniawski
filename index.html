@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="/">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  <!-- Primary SEO -->
+  <title>Sieniawski</title>
+  <meta name="description" content="The Sieniawski family website. Celebrating a Polish noble name with centuries of heritage across Europe and beyond.">
+  <meta name="keywords" content="Sieniawski, Polish family, Polish nobility, family heritage, Polish history">
+  <meta name="author" content="Sieniawski Family">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://sieniawski.co.uk/">
+
+  <!-- Open Graph (Facebook, LinkedIn, WhatsApp previews) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sieniawski.co.uk/">
+  <meta property="og:title" content="Sieniawski — A Polish Family Name">
+  <meta property="og:description" content="Celebrating a Polish noble name with centuries of heritage across Europe and beyond.">
+  <meta property="og:image" content="https://sieniawski.co.uk/icons/Icon-512.png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:image:alt" content="Sieniawski family crest — gold S on dark shield">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:site_name" content="Sieniawski">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Sieniawski — A Polish Family Name">
+  <meta name="twitter:description" content="Celebrating a Polish noble name with centuries of heritage across Europe and beyond.">
+  <meta name="twitter:image" content="https://sieniawski.co.uk/icons/Icon-512.png">
+  <meta name="twitter:image:alt" content="Sieniawski family crest">
+
+  <!-- Theme & PWA -->
+  <meta name="theme-color" content="#D4AF37">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Sieniawski">
+
+  <!-- Icons -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="icon_32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="icon_16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="icon_180.png">
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Structured data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Sieniawski",
+    "url": "https://sieniawski.co.uk/",
+    "description": "The Sieniawski family website. Celebrating a Polish noble name with centuries of heritage.",
+    "inLanguage": "en-GB"
+  }
+  </script>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: #0d0d1a;
+      font-family: Georgia, serif;
+    }
+
+    #splash {
+      position: fixed;
+      inset: 0;
+      background: #0d0d1a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+
+    #splash.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .splash-letter {
+      color: #D4AF37;
+      font-size: 72px;
+      font-weight: 300;
+      letter-spacing: 4px;
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    .splash-name {
+      color: #ffffff;
+      font-size: 13px;
+      letter-spacing: 8px;
+      margin-top: 16px;
+      opacity: 0;
+      animation: fadeIn 0.8s ease 0.3s forwards;
+      text-transform: uppercase;
+    }
+
+    .splash-line {
+      width: 0;
+      height: 1px;
+      background: #D4AF37;
+      margin-top: 24px;
+      animation: expandLine 0.8s ease 0.6s forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes expandLine {
+      from { width: 0; }
+      to   { width: 40px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Accessible no-script fallback -->
+  <noscript>
+    <style>
+      .noscript {
+        background: #0d0d1a; color: #fff; font-family: Georgia, serif;
+        display: flex; align-items: center; justify-content: center;
+        height: 100vh; text-align: center; padding: 24px;
+      }
+    </style>
+    <div class="noscript">
+      <div>
+        <h1 style="color:#D4AF37;letter-spacing:4px;font-weight:300;">SIENIAWSKI</h1>
+        <p style="margin-top:16px;color:#ffffff99;">Please enable JavaScript to view this site.</p>
+      </div>
+    </div>
+  </noscript>
+
+  <div id="splash" role="status" aria-label="Loading Sieniawski">
+    <div class="splash-letter" aria-hidden="true">S</div>
+    <div class="splash-name" aria-hidden="true">Sieniawski</div>
+    <div class="splash-line" aria-hidden="true"></div>
+  </div>
+
+  <script src="flutter_bootstrap.js" async></script>
+
+  <script>
+    window.addEventListener('flutter-first-frame', function() {
+      var splash = document.getElementById('splash');
+      splash.classList.add('hidden');
+      setTimeout(function() { splash.remove(); }, 600);
+    });
+  </script>
+</body>
+</html>
