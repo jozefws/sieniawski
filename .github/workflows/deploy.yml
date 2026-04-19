@@ -20,7 +20,7 @@ jobs:
           cache: true
 
       - name: Build web
-        run: flutter build web --release --web-renderer html --base-href /
+        run: flutter build web --release --base-href /
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
