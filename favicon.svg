@@ -1,17 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <!-- Background -->
-  <rect width="512" height="512" fill="#0D0D1A"/>
-
-  <!-- Shield shape -->
-  <path d="M256 32 L448 96 L448 320 Q448 480 256 512 Q64 480 64 320 L64 96 Z"
-        fill="#1A1A3E" stroke="#D4AF37" stroke-width="10"/>
-
-  <!-- S monogram -->
-  <text x="256" y="360"
-        font-family="Georgia, serif"
-        font-size="260"
-        font-weight="300"
-        fill="#D4AF37"
-        text-anchor="middle"
-        dominant-baseline="auto">S</text>
+  <rect width="512" height="512" fill="#0a0a0b"/>
+  <text x="226" y="356" font-family="Arial, Helvetica, sans-serif" font-size="300" font-weight="700" fill="#ebe7dd" text-anchor="middle">S</text>
+  <circle cx="378" cy="326" r="22" fill="#c9a24b"/>
 </svg>
