@@ -14,17 +14,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: subosito/flutter-action@v2
+      - uses: actions/setup-node@v4
         with:
-          channel: stable
-          cache: true
+          node-version: 22
+          cache: npm
+          cache-dependency-path: package-lock.json
 
-      - name: Build web
-        run: flutter build web --release --base-href /
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Deploy to gh-pages
+      - name: Build site
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: build/web
+          publish_dir: dist
           cname: sieniawski.co.uk
